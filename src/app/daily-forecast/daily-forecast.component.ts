@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../services/weather.service';
+import { CitySearchService } from '../services/city_search.service';
 import { City } from '../models/city.model';
 import { DailyData } from '../models/daily-data.model';
 import { DailyTemp } from '../models/daily-temp.model';
@@ -14,21 +15,30 @@ export class DailyForecastComponent implements OnInit {
   name: string = '';
   location: City;
   weatherData: DailyData[] = [];
+  selectedCities: any;
 
   canvas: any;
   ctx: any;
   dailyTempChart: any;
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService, private cityService: CitySearchService) { }
 
   ngOnInit(): void {
     this.location = new City();
   }
 
+  onInputChange(event: any) {
+    console.log(this.cityService.getCities());
+    if(event.target.value){
+      this.name = event.target.value;
+      this.selectedCities = this.cityService.getCities();
+    }
+  }
+
   setValue() {
     this.weatherService.getDailyWeatherByCityName(this.name).subscribe(
       (res: any) => {
-        
+
         // TODO pripremiti podatke pomoću city, daily-data i daily-temp.model.ts u src/app/models
 
         // Pozvati renderLineChart() funkciju za današnji dan

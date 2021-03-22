@@ -1,11 +1,18 @@
 <div class="form-group" style="margin: 2%;">
     <label for="city-name">Pretraga po gradu: </label>
     <br>
-    <input type="text" id="city-name" placeholder="Upišite naziv grada" required>
-    <!-- TODO izmijeniti input tako da upisom teksta automatski izmijenjujemo name: string polje u .ts fileu -->
+    <input type="text" id="city-name" ng-model="searchCity" placeholder="Upišite naziv grada" (input)="onInputChange($event)" required >
     <br>
     <button type="button" class="btn btn-secondary" style="margin-top: 0.5%;">Pretraga</button>
-    <!-- TODO klikom na gumb trebala bi se pozivati metoda setValue() -->
+</div>
+
+<!--Search Results-->
+<div class="container" *ngFor="let city of selectedCities" style="padding-top: 2%">
+    <div class="card" >
+        <div class="card-header">
+            {{place.name}}
+        </div>
+    </div>
 </div>
 
 <div class="weather-data" style="margin: 1%">
@@ -15,9 +22,9 @@
         </div>
         <canvas id="tempChart" width="800" height="200"></canvas>
     </div>
-    
+
     <div class="card-group" fxLayout="row" fxLayoutAlign="none" style="width: 350px; margin: 1%;">
-        <div class="card"  
+        <div class="card"
         style="width: fit-content; padding: 0%; margin: 1%; border-radius: 10%;">
         <!-- TODO Kreirati kartice prema zadanom templateu sa podacima prognoze za tri dana. Klikom na karticu poziva se renderLineChart() metoda sa podacima za taj dan  -->
             <div class="card-body">
@@ -32,6 +39,6 @@
             </div>
         </div>
     </div>
-        
+
 
 </div>
