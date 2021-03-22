@@ -13,6 +13,7 @@ import { CurrentWeatherData } from './../models/current-weather-data.model';
 export class CurrentWeatherDataComponent implements OnInit {
   currentWeather: CurrentWeatherData;
   airQualityAndWeather: CurrentWeatherData;
+  pressureRainAndIndex: CurrentWeatherData;
 
   astronomyData: AstronomyData;
   accessories: Accessory[] = [];
@@ -22,6 +23,7 @@ export class CurrentWeatherDataComponent implements OnInit {
   ngOnInit(): void {
     this.getCurrentWeatherData();
     this.getWeatherAndAirQuality();
+    this.getPressureRainAndIndex();
     this.getAstronomyData();
   }
 
@@ -35,6 +37,13 @@ export class CurrentWeatherDataComponent implements OnInit {
     this.weatherService.getWeatherAndAirQuality().subscribe((response) => {
       (this.airQualityAndWeather = response.body),
         console.log(this.airQualityAndWeather);
+    });
+  }
+
+  getPressureRainAndIndex() {
+    this.weatherService.getPressureRainAndIndex().subscribe((response) => {
+      (this.pressureRainAndIndex = response.body),
+        console.log(this.pressureRainAndIndex);
     });
   }
 
