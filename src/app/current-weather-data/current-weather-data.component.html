@@ -15,8 +15,17 @@
   </div>
 
   <div class="sunrise">
-    <div style="font-size: 1.5rem; margin: 1rem">Sunrise & sunset </div>
-    <!-- <div> Real feel: {{currentWeather.current.condition.text}}</div> -->
+    <!-- <div *ngIf="astronomyData" class="current-weather"> -->
+      <div style="font-size: 1.5rem; margin: 1rem">Sunrise & sunset for {{astronomyData.location.name}}</div>
+      <!-- <div>On date: {{astronomyData.location.last_updated}} </div> -->
+      <div class="curredt-data" style="margin: 1rem">
+        <div style="font-size: 1rem"> Sunrise: {{astronomyData.astronomy.astro.sunrise}} </div>
+        <div style="font-size: 1rem"> Sunset: {{astronomyData.astronomy.astro.sunset}} </div>
+        <div style="font-size: 1rem"> Moonrise: {{astronomyData.astronomy.astro.moonrise}} </div>
+        <div style="font-size: 1rem"> Moonset: {{astronomyData.astronomy.astro.moonset}} </div>
+        <div style="font-size: 1rem"> Moon Phase: {{astronomyData.astronomy.astro.moon_phase}} </div>
+        <div style="font-size: 1rem"> Moon Illumination: {{astronomyData.astronomy.astro.moon_illumination}} </div>
+    </div>
   </div>
 
 

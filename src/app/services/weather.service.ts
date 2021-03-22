@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
+import { AstronomyData } from '../models/astronomy.model';
 import { City } from '../models/city.model';
 import { CurrentWeatherData } from '../models/current-weather-data.model';
 
@@ -40,8 +41,10 @@ export class WeatherService {
    * @param city City for which data will be fetched.
    * @param date Date for which data will be fetched.
    */
-  public getAstronomyData(city: City) {
-    const astronomyUrl = 'http://api.weatherapi.com/v1/astronomy.json';
+  public getAstronomyData(
+    city: City = { name: 'Zagreb', date: '2021-03-22', localTime: null }
+  ) {
+    const astronomyUrl = 'http://api.weatherapi.com/v1/astronomy.json?';
     const url: string =
       astronomyUrl +
       [
@@ -50,7 +53,10 @@ export class WeatherService {
         this.makeParam('dt', city.date),
       ].join('&');
 
-    return this.http.get(url);
+    return this.http.get<AstronomyData>(url, {
+      observe: 'response',
+      responseType: 'json',
+    });
   }
 
   /** Helper method for making param for API calls */
