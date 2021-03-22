@@ -42,6 +42,14 @@
 .air-title{
   font-size: 1.5rem;
 
+}.pressure-text {
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.pressure-title{
+  font-size: 1.5rem;
+
 }
 .icon-s{
   width: 20px;
@@ -49,6 +57,15 @@
 }
 
 .current-weather{
+  display: flex;
+  justify-content: space-around;
+  margin:0.5rem;
+  font-size:1rem;
+  background-image:linear-gradient(#bb8cb8, #dec5dc);
+  border-radius:0.5rem;
+  width:70%
+}
+.pressure-weather{
   display: flex;
   justify-content: space-around;
   margin:0.5rem;

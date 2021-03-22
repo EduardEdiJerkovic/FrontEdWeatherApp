@@ -12,6 +12,7 @@ export class CurrentWeatherDataComponent implements OnInit {
 
   currentWeather: CurrentWeatherData;
   airQualityAndWeather: CurrentWeatherData;
+  pressureRainAndIndex: CurrentWeatherData;
   accessories: Accessory[] = [];
 
   constructor( private weatherService: WeatherService ) { }
@@ -19,6 +20,7 @@ export class CurrentWeatherDataComponent implements OnInit {
   ngOnInit(): void {
     this.getCurrentWeatherData();
     this.getWeatherAndAirQuality();
+    this.getPressureRainAndIndex();
   }
 
   getCurrentWeatherData() {
@@ -33,6 +35,14 @@ export class CurrentWeatherDataComponent implements OnInit {
     this.weatherService.getWeatherAndAirQuality().subscribe((response) => {
       this.airQualityAndWeather = response.body,
         console.log(this.airQualityAndWeather)
+    }
+    )
+  }
+
+  getPressureRainAndIndex() {
+    this.weatherService.getPressureRainAndIndex().subscribe((response) => {
+      this.pressureRainAndIndex = response.body,
+        console.log(this.pressureRainAndIndex)
     }
     )
   }

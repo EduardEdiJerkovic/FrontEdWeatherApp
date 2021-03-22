@@ -25,6 +25,14 @@ export class WeatherService {
     { observe: 'response', responseType: 'json' });
   }
 
+  public getPressureRainAndIndex() {
+    return this.http.get<CurrentWeatherData>('http://api.weatherapi.com/v1/current.json?key='
+    + environment.apiKey +
+    '&q=Zagreb&aqi=yes',
+    { observe: 'response', responseType: 'json' });
+
+  }
+
   public getDailyWeatherByCityName(city: string) {
     const url: string = 'http://api.weatherapi.com/v1/forecast.json?key='
       + environment.apiKey
