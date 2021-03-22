@@ -41,7 +41,7 @@ export class WeatherService {
    * @param date Date for which data will be fetched.
    */
   public getAstronomyData(city: City) {
-    const astronomyUrl = 'https://api.weatherapi.com/v1/astronomy.json';
+    const astronomyUrl = 'http://api.weatherapi.com/v1/astronomy.json';
     const url: string =
       astronomyUrl +
       [
@@ -49,6 +49,8 @@ export class WeatherService {
         this.makeParam('q', city.name),
         this.makeParam('dt', city.date),
       ].join('&');
+
+    return this.http.get(url);
   }
 
   /** Helper method for making param for API calls */
