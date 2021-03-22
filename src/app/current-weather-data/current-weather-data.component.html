@@ -45,6 +45,21 @@
 
     </div>
 
+    <div *ngIf="pressureRainAndIndex" class="pressure-weather">
+      <div class="pressure-data" style="margin: 1rem">
+        <div style="font-size: 1.5rem"> Current pressure on location {{currentWeather.location.name}} </div>
+        <div>On date: {{currentWeather.current.last_updated}} </div>
+        <div style="font-size: 3rem; font-weight: bold;">{{currentWeather.current.pressure_mb}} HPa</div>
+        <div>Humidity: {{currentWeather.current.humidity}} %</div>
+        <div>UV Index: {{currentWeather.current.uv}}</div>
+      </div>
+  
+      
+  
+    </div>
+
+    
+
     <div *ngIf="accessories && accessories.length > 0">
         <p class="">Accessories</p>
         <!--Ovdje ubacite for petlju i ispisite ikonice te implementirajte tooltipove za preporucenu opremu-->
