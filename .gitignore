@@ -7,6 +7,9 @@
 # Only exists if Bazel was run
 /bazel-out
 
+# Environments variables
+src/environments/environment.*
+
 # dependencies
 /node_modules
 
@@ -46,4 +49,6 @@ testem.log
 Thumbs.db
 
 # Environment
-/environment
+src/environments/
+environment.prod
+environment
